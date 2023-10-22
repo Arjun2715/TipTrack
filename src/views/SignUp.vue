@@ -96,9 +96,18 @@
             </button>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?
-              <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >Login here</a
-              >
+              <router-link
+            :to="{
+              name: 'login',
+            }"
+
+          > <a
+                  href="#"
+                  class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >Login here</a
+                >
+        </router-link>
+               
             </p>
           </form>
         </div>
