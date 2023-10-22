@@ -1,6 +1,8 @@
 <template>
   <div>
-        <p class="text-5xl">signUp</p>
+        <div class="text-red-500 text-9xl">
+                test
+        </div>
   </div>
 </template>
 

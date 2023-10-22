@@ -1,14 +1,11 @@
-<script setup>
-// import RouterView from 'vue-router' 
-// import SignUp from './views/SignUp.vue';
+<script setup> 
+
 </script>
 
-<template>  
-  <div>
-  <!-- <SignUp /> -->
-  signup
-  </div>
-<!-- <RouterView /> -->
+<template>    
+<!-- <Header/> -->
+  <RouterView />
+<!-- <Footer/> -->
 </template>
 
 <style scoped>
