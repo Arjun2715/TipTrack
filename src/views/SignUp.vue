@@ -130,7 +130,7 @@
 
 <script>
 // import the firestore instance and relevant methods |
- import db from '../firebase/init.js';
+ import db from '@/firebase/init.js';
  import { collection, addDoc } from 'firebase/firestore';
 export default {
 //     created() {
