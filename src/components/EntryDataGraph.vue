@@ -7,7 +7,7 @@
 <script>
 import Chart from 'chart.js/auto'
 import db from '@/firebase/init.js'
-import { collection, getDocs, query, orderBy ,limit  } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 export default {
   // props: {
   //   data: Object
@@ -25,13 +25,13 @@ export default {
   },
   methods: {
     async getData() {
-      const q = query(collection(db, 'TipEntry'), orderBy('Date', 'desc'), limit(7));
-      const querySnapshot = await getDocs(q);
-      
+      const q = query(collection(db, 'TipEntry'), orderBy('Date', 'desc'), limit(7))
+      const querySnapshot = await getDocs(q)
+
       querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        this.tableData.push(data);
-      });
+        const data = doc.data()
+        this.tableData.push(data)
+      })
       console.log(this.tableData)
     },
     createChart() {

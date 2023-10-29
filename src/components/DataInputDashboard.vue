@@ -99,11 +99,9 @@
 
 <script>
 import db from '@/firebase/init.js'
-import { collection, addDoc, query, getDocs, where } from 'firebase/firestore'
-import PopUp from '@/components/PopUp.vue'
+import { collection, addDoc, query, getDocs, where } from 'firebase/firestore' 
 export default {
-  component: {
-    PopUp
+  component: { 
   },
   data() {
     return {

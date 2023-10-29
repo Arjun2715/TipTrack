@@ -1,12 +1,12 @@
 <template>
   <div class="p-2 rounded-xl bg-gray-50 dark:bg-gray-800">
-    <div class="relative sm:rounded-lg ">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+    <div class="relative sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
           <tr>
-            <th scope="col" class="p-4 ">
+            <th scope="col" class="p-4">
               <div class="flex items-center">
                 <input
                   id="checkbox-all-search"
@@ -18,7 +18,9 @@
             </th>
             <th scope="col" class="px-1 lg:px-3 py-3 text-center">Tip</th>
             <th scope="col" class="px-1 lg:px-3 py-3 text-center">Gas</th>
-            <th scope="col" class="px-1 lg:px-3 py-3 text-center hidden md:flex  ">Day of the week</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center hidden md:flex">
+              Day of the week
+            </th>
             <th scope="col" class="px-1 lg:px-3 py-3 text-center">Date</th>
             <th scope="col" class="px-1 lg:px-3 py-3 text-center">Action</th>
           </tr>
@@ -29,8 +31,8 @@
             :key="index"
             class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
           >
-            <td class="w-4 p-4 ">
-              <div class="flex items-center ">
+            <td class="w-4 p-4">
+              <div class="flex items-center">
                 <input
                   id="checkbox-table-search-1"
                   type="checkbox"
@@ -47,9 +49,7 @@
             </th>
             <td class="px-1 text-center lg:px-3 py-4">{{ item.DayExpence }}€</td>
             <td class="hidden text-center md:flex px-1 lg:px-3 py-4">
-              {{
-                this.daysOfWeek[item.WeekDay]
-              }}
+              {{ this.daysOfWeek[item.WeekDay] }}
             </td>
             <td class="sm:px-1 lg:px-3 py-4">
               <!-- {{ new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000) }}  -->
@@ -60,7 +60,9 @@
               <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >Edit</a
               >
-              <a href="#" class="text-center font-medium text-red-600 dark:text-red-500 hover:underline"
+              <a
+                href="#"
+                class="text-center font-medium text-red-600 dark:text-red-500 hover:underline"
                 >Remove</a
               >
             </td>
@@ -69,7 +71,7 @@
       </table>
       <!-- {{ this.tableData[0] }} -->
 
-      <nav class="flex flex-col  items-center justify-between pt-4" aria-label="Table navigation">
+      <nav class="flex flex-col items-center justify-between pt-4" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
           >Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of
           <span class="font-semibold text-gray-900 dark:text-white">1000</span></span
@@ -103,7 +105,7 @@
               class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >3</a
             >
-          </li> 
+          </li>
           <li>
             <a
               href="#"
@@ -119,7 +121,7 @@
 
 <script>
 import db from '@/firebase/init.js'
-import { collection, getDocs,orderBy,limit } from 'firebase/firestore'
+import { collection, getDocs, orderBy, limit } from 'firebase/firestore'
 export default {
   data() {
     return {
@@ -132,14 +134,14 @@ export default {
   },
   methods: {
     formatDate(date) {
-      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear(); 
-      const formattedDate = `${day}/${month}/${year}`;
-       return formattedDate;
+      const month = (date.getMonth() + 1).toString().padStart(2, '0') // Month is 0-indexed
+      const day = date.getDate().toString().padStart(2, '0')
+      const year = date.getFullYear()
+      const formattedDate = `${day}/${month}/${year}`
+      return formattedDate
     },
     async getTableData() {
-      const querySnapshot = await getDocs(collection(db, 'TipEntry'), orderBy('Date', 'desc'));//order wont work
+      const querySnapshot = await getDocs(collection(db, 'TipEntry'), orderBy('Date', 'desc')) //order wont work
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         const data = doc.data()
