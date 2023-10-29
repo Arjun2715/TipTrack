@@ -3,7 +3,7 @@
     <DashboardNav />
     <Sidenav />
     <div class="p-4 space-y-4 sm:ml-64">
-      <div class="flex flex-row flex-wrap gap-4 mb-4 mt-16">
+      <div class="flex flex-row flex-wrap gap-4 mb-4">
         <DataInputDashboard />
         <LastMonthsData />
         <CurrentMonthsData />

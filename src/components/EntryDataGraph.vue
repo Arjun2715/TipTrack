@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center h-64 rounded-xl p-6 bg-gray-50 dark:bg-gray-800">
-    <canvas id="myChart" width="auto" height="auto"></canvas>
+  <div class="flex justify-center h-64 rounded-xl lg:p-6  w-full bg-gray-50 dark:bg-gray-800">
+    <canvas class="p-1" id="myChart" width="auto" height="auto"></canvas>
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
             data: tipData,
             fill: false,
             // borderColor: '#FFA500',
-            tension: 0.4,
+            tension: 0.1,
             borderJoinStyle: 'round',
             // beginAtZero: false,
             // backgroundColor: 'rgba(255, 255, 255)',
