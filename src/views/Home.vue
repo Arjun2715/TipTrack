@@ -8,8 +8,8 @@
         <LastMonthsData />
         <CurrentMonthsData />
       </div>
-      <EntryLog />
       <EntryDataGraph />
+      <EntryLog />
     </div>
   </div>
 </template>
