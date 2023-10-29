@@ -52,8 +52,9 @@
               }}
             </td>
             <td class="px-6 py-4">
-              <!-- {{ new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000) }}z   -->
-              {{ formatDate(new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000)) }}
+              <!-- {{ new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000) }}  -->
+              <!-- {{ formatDate(new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000)) }} -->
+              {{ item.Date }}
             </td>
             <td class="px-6 py-4 space-x-2">
               <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
