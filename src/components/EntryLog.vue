@@ -1,12 +1,12 @@
 <template>
   <div class="p-2 rounded-xl bg-gray-50 dark:bg-gray-800">
-    <div class="relative sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div class="relative sm:rounded-lg ">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
           <tr>
-            <th scope="col" class="p-4">
+            <th scope="col" class="p-4 ">
               <div class="flex items-center">
                 <input
                   id="checkbox-all-search"
@@ -16,11 +16,11 @@
                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
               </div>
             </th>
-            <th scope="col" class="px-6 py-3">Total Tip</th>
-            <th scope="col" class="px-6 py-3">Expense</th>
-            <th scope="col" class="px-6 py-3">Day of the week</th>
-            <th scope="col" class="px-6 py-3">Date</th>
-            <th scope="col" class="px-6 py-3">Action</th>
+            <th scope="col" class="px-1 lg:px-3 py-3">Tip</th>
+            <th scope="col" class="px-1 lg:px-3 py-3">Expense</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 hidden ">Day of the week</th>
+            <th scope="col" class="px-1 lg:px-3 py-3">Date</th>
+            <th scope="col" class="px-1 lg:px-3 py-3">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +29,8 @@
             :key="index"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
           >
-            <td class="w-4 p-4">
-              <div class="flex items-center">
+            <td class="w-4 p-4 ">
+              <div class="flex items-center ">
                 <input
                   id="checkbox-table-search-1"
                   type="checkbox"
@@ -41,22 +41,22 @@
             </td>
             <th
               scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              class=" px-1 lg:px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               {{ item.DayTip }}€
             </th>
-            <td class="px-6 py-4">{{ item.DayExpence }}€</td>
-            <td class="px-6 py-4">
+            <td class="px-1 lg:px-3 py-4">{{ item.DayExpence }}€</td>
+            <td class="hidden px-1 lg:px-3 py-4">
               {{
                 this.daysOfWeek[item.WeekDay]
               }}
             </td>
-            <td class="px-6 py-4">
+            <td class="sm:px-1 lg:px-3 py-4">
               <!-- {{ new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000) }}  -->
               <!-- {{ formatDate(new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000)) }} -->
               {{ item.Date }}
             </td>
-            <td class="px-6 py-4 space-x-2">
+            <td class="px-1 lg:px-3 py-4 space-x-2">
               <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >Edit</a
               >
@@ -69,7 +69,7 @@
       </table>
       <!-- {{ this.tableData[0] }} -->
 
-      <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
+      <nav class="flex flex-col  items-center justify-between pt-4" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
           >Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of
           <span class="font-semibold text-gray-900 dark:text-white">1000</span></span
@@ -103,21 +103,7 @@
               class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >3</a
             >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >4</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >5</a
-            >
-          </li>
+          </li> 
           <li>
             <a
               href="#"
