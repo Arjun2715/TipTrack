@@ -16,18 +16,18 @@
                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
               </div>
             </th>
-            <th scope="col" class="px-1 lg:px-3 py-3">Tip</th>
-            <th scope="col" class="px-1 lg:px-3 py-3">Expense</th>
-            <th scope="col" class="px-1 lg:px-3 py-3 hidden ">Day of the week</th>
-            <th scope="col" class="px-1 lg:px-3 py-3">Date</th>
-            <th scope="col" class="px-1 lg:px-3 py-3">Action</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center">Tip</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center">Gas</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center hidden md:flex  ">Day of the week</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center">Date</th>
+            <th scope="col" class="px-1 lg:px-3 py-3 text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr
             v-for="(item, index) in this.tableData"
             :key="index"
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
           >
             <td class="w-4 p-4 ">
               <div class="flex items-center ">
@@ -41,12 +41,12 @@
             </td>
             <th
               scope="row"
-              class=" px-1 lg:px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              class="text-center px-1 lg:px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               {{ item.DayTip }}€
             </th>
-            <td class="px-1 lg:px-3 py-4">{{ item.DayExpence }}€</td>
-            <td class="hidden px-1 lg:px-3 py-4">
+            <td class="px-1 text-center lg:px-3 py-4">{{ item.DayExpence }}€</td>
+            <td class="hidden text-center md:flex px-1 lg:px-3 py-4">
               {{
                 this.daysOfWeek[item.WeekDay]
               }}
@@ -56,11 +56,11 @@
               <!-- {{ formatDate(new Date(item.created.seconds * 1000 + item.created.nanoseconds / 1000000)) }} -->
               {{ item.Date }}
             </td>
-            <td class="px-1 lg:px-3 py-4 space-x-2">
+            <td class="px-1 text-center lg:px-3 py-4 space-x-2 sm:flex">
               <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >Edit</a
               >
-              <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline"
+              <a href="#" class="text-center font-medium text-red-600 dark:text-red-500 hover:underline"
                 >Remove</a
               >
             </td>
@@ -119,7 +119,7 @@
 
 <script>
 import db from '@/firebase/init.js'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs,orderBy,limit } from 'firebase/firestore'
 export default {
   data() {
     return {
@@ -139,12 +139,12 @@ export default {
        return formattedDate;
     },
     async getTableData() {
-      const querySnapshot = await getDocs(collection(db, 'TipEntry'))
+      const querySnapshot = await getDocs(collection(db, 'TipEntry'), orderBy('Date', 'desc'));//order wont work
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         const data = doc.data()
         this.tableData.push(data)
-        // console.log(doc.data())
+        //  console.log(doc.data())
       })
       console.log(this.tableData)
     }
