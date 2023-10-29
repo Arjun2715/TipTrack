@@ -26,7 +26,7 @@
     </div>
     <div class="flex justify-end">
       <button
-        @click="entryAdded(), saveEntryToDB()"
+        @click="saveEntryToDB()"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         Save Entry
@@ -37,11 +37,14 @@
 
 <script>
 import db from '@/firebase/init.js'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs, where } from 'firebase/firestore'
+import PopUp from '@/components/PopUp.vue'
 export default {
+  component: {
+    PopUp
+  },
   data() {
     return {
-      
       TotalTip: 0,
       TotalExpence: 0
     }
@@ -55,26 +58,34 @@ export default {
       return formattedDate
     },
     async saveEntryToDB() {
-      const d = new Date()
+      const currentDate = new Date()
+      const formattedDate = this.formatDate(currentDate)
       const colRef = collection(db, 'TipEntry')
-      const dataObj = {
-        DayTip: this.TotalTip,
-        DayExpence: this.TotalExpence,
-        Date: this.formatDate(new Date()),
-        WeekDay: new Date().getDay(),
-        created: new Date(),
-        lastUpdated: new Date()
-      }
-      const docRef = await addDoc(colRef, dataObj)
-      console.log('Entry Created with id: ' + docRef.id)
-    },
 
-    entryAdded() {
-      const d = new Date()
-      console.log(this.TotalTip)
-      console.log(this.TotalExpence)
-      console.log(d.getDay())
+      // Check if an entry with today's date already exists
+      const querySnapshot = await getDocs(query(colRef, where('Date', '==', formattedDate)))
+      if (querySnapshot.size === 0) {
+        const dataObj = {
+          DayTip: this.TotalTip,
+          DayExpence: this.TotalExpence,
+          Date: this.formatDate(new Date()),
+          WeekDay: new Date().getDay(),
+          created: new Date(),
+          lastUpdated: new Date()
+        }
+        const docRef = await addDoc(colRef, dataObj)
+        console.log('Entry Created with id: ' + docRef.id)
+      } else {
+        console.log("Today's entry already exists in the database.")
+      }
     }
+
+    // entryAdded() {
+    //   const d = new Date()
+    //   console.log(this.TotalTip)
+    //   console.log(this.TotalExpence)
+    //   console.log(d.getDay())
+    // }
   }
 }
 </script>
