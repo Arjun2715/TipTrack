@@ -1,5 +1,4 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
+<script> 
 import Header from '@/components/HeaderMain.vue'
 import Footer from '@/components/FooterMain.vue'
 import { onMounted } from 'vue'
@@ -15,10 +14,11 @@ import {
   initPopovers,
   initTabs,
   initTooltips
-} from 'flowbite'
-
-// initialize components based on data attribute selectors
-onMounted(() => {
+} from 'flowbite' 
+ 
+ 
+ 
+   onMounted(() => {
   initAccordions()
   initCarousels()
   initCollapses()
@@ -32,10 +32,10 @@ onMounted(() => {
   initTooltips()
 })
 </script>
+  }
+
 <template>
-  <Header />
+  <!-- <Header /> -->
   <RouterView />
-  <Footer />
+  <!-- <Footer /> -->
 </template>
-<style scoped>
-</style>

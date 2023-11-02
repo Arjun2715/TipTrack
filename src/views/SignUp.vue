@@ -59,7 +59,7 @@
                 required=""
               />
             </div>
-            <div>
+            <!-- <div>
               <label
                 for="confirm-password"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -73,7 +73,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
-            </div>
+            </div> -->
             <div class="flex items-start">
               <div class="flex items-center h-5">
                 <input
@@ -81,10 +81,9 @@
                   aria-describedby="terms"
                   type="checkbox"
                   class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                  
                 />
               </div>
-              <div class="ml-3 text-sm">
+              <div class="ml-3 text-sm mb-2">
                 <label for="terms" class="font-light text-gray-500 dark:text-gray-300"
                   >I accept the
                   <a
@@ -106,19 +105,31 @@
                 class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Create an account
-              </button></router-link
-            >
+              </button>
+              <div class="py-6">
+                <div class="relative">
+                  <hr class=" " />
+                  <div class="absolute bottom-[-10px] left-[50%]">
+                    <label class="bg-current">OR</label>
+                  </div>
+                </div>
+                
+              </div>
+              <button class="self-center">
+                 <img cla src="@/assets/google.svg" alt="" srcset="">
+                </button>
+            </router-link>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?
               <router-link
                 :to="{
-                  name: 'login'
+                  name: 'signin'
                 }"
               >
                 <a
                   href="#"
                   class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >Login here</a
+                  >signin here</a
                 >
               </router-link>
             </p>
@@ -130,13 +141,26 @@
 </template>
 
 <script>
-// import the firestore instance and relevant methods |
+import { onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import db from '@/firebase/init.js'
 import { collection, addDoc } from 'firebase/firestore'
+// import  {getAuth, createUserWithEmailAndPassword} from "firebase/Auth"
+import firebase from 'firebase'
 export default {
-  //     created() {
-  //         this.createUser();
-  //   },
+  setup(){
+    const router = useRouter();
+    const route = useRoute();
+    onBeforeMount(() => {
+        firebase.auth().inAuthStateChanged((user) => {
+          if(!user){
+            router.replace('/signin');
+          }else if(router.path == '/signin' || router.path == '/signup'){
+            router.replace('/home');
+          }
+        })
+    })
+  },
   data() {
     return {
       username: '',
