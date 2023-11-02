@@ -146,20 +146,20 @@ import { useRoute, useRouter } from 'vue-router'
 import db from '@/firebase/init.js'
 import { collection, addDoc } from 'firebase/firestore'
 // import  {getAuth, createUserWithEmailAndPassword} from "firebase/Auth"
-import firebase from 'firebase'
+// import firebase from 'firebase'
 export default {
   setup(){
-    const router = useRouter();
-    const route = useRoute();
-    onBeforeMount(() => {
-        firebase.auth().inAuthStateChanged((user) => {
-          if(!user){
-            router.replace('/signin');
-          }else if(router.path == '/signin' || router.path == '/signup'){
-            router.replace('/home');
-          }
-        })
-    })
+    // const router = useRouter();
+    // const route = useRoute();
+    // onBeforeMount(() => {
+    //     firebase.auth().inAuthStateChanged((user) => {
+    //       if(!user){
+    //         router.replace('/signin');
+    //       }else if(router.path == '/signin' || router.path == '/signup'){
+    //         router.replace('/home');
+    //       }
+    //     })
+    // })
   },
   data() {
     return {
