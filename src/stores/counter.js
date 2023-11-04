@@ -1,12 +1,26 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import { createStore } from 'vuex'
+export default createStore({
+  state: {
+    user: null,
+  },
+  mutations: {
+    SET_USER ( state, user){
+      state.user = user
+    },
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+    CLEAR_USER ( state, user){
+      state.user = user
+    }
+  },
+  actions: {
+    // async login({commit}, details){
 
-  return { count, doubleCount, increment }
+    // },
+    // async signUp({commit}, details){
+      
+    // },
+    // async logout({commit}){
+      
+    // }
+  }, 
 })

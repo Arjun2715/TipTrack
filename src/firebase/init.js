@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app"
 // import { getAnalytics } from "firebase/analytics"; TipTrack\src\firebase\init.js
 import { getFirestore } from "firebase/firestore"
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,6 +21,8 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-// init firestore service 
-const db = getFirestore()
-export default db
+// init firestore service
+const db = getFirestore();
+const auth = getAuth(app); 
+
+export {db, auth};
