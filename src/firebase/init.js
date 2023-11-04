@@ -23,6 +23,6 @@ initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 // init firestore service
 const db = getFirestore();
-const auth = getAuth(app); 
+// const auth = getAuth(app); 
 
-export {db, auth};
+export default db

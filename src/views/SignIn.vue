@@ -105,13 +105,9 @@
   </section>
 </template>
 
-<script>
-import { Ref } from 'vue'
-import { useStore } from 'vuex'
+<script> 
 export default {
-  setup() {
-    const signin_form = ref({});
-    const store = useStore();
+  setup() { 
   
   }
 }
