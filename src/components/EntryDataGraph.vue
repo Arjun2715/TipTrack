@@ -6,7 +6,7 @@
 
 <script>
 import Chart from 'chart.js/auto'
-import db from '@/firebase/init.js'
+import {auth,db} from '@/firebase/init.js'
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 export default {
   // props: {

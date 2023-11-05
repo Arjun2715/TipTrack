@@ -10,7 +10,7 @@
           >
             Create an account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="">
+          <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
             <div>
               <label
                 for="username"
@@ -143,8 +143,9 @@
 <script>
 import { onBeforeMount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import db from '@/firebase/init.js'
-import { collection, addDoc } from 'firebase/firestore'
+import { auth , db} from '@/firebase/init.js'
+import { collection, addDoc } from 'firebase/firestore' 
+import { createUserWithEmailAndPassword } from 'firebase/auth' 
 export default {
   setup(){
   },
@@ -165,7 +166,17 @@ export default {
       }
       const docRef = await addDoc(colRef, dataObj)
       console.log('Document Created with id: ' + docRef.id)
+    },
+
+    async register(){
+      await createUserWithEmailAndPassword(auth, email, password)
+      .then()
+      .catch((err)=>{
+        console.log(err);
+      })
     }
+
+
   }
 }
 </script>

@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import db from '@/firebase/init.js'
+import {db, auth} from '@/firebase/init.js'
 import { collection, addDoc, query, getDocs, where } from 'firebase/firestore' 
 export default {
   component: { 

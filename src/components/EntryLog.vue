@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import db from '@/firebase/init.js'
+import {db ,auth} from '@/firebase/init.js'
 import { collection, getDocs, orderBy, limit } from 'firebase/firestore'
 export default {
   data() {
